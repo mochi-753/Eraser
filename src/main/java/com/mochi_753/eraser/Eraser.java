@@ -12,5 +12,6 @@ public class Eraser {
     public Eraser() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(bus);
+        ModTabs.register(bus);
     }
 }
