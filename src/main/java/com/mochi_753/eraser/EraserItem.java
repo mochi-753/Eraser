@@ -1,6 +1,11 @@
 package com.mochi_753.eraser;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -47,13 +52,30 @@ public class EraserItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
+    @SuppressWarnings("removal")
     private void removeLivingEntity(LivingEntity target, Player player, Level level) {
         if (target instanceof Player) {
             player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
         } else {
-            target.remove(Entity.RemovalReason.DISCARDED);
             level.playSound(null, target.blockPosition(), SoundEvents.ENDERMAN_TELEPORT,
                     SoundSource.PLAYERS, 1.0F, 1.0F);
+
+            target.remove(Entity.RemovalReason.DISCARDED);
+
+            // 対象にremove()が効かなかった場合
+            if (target.isAlive()) {
+                player.displayClientMessage(Component.literal("Erased by force"), true);
+                if (target.level() instanceof ServerLevel serverLevel) {
+                    MinecraftServer server = serverLevel.getServer();
+                    ResourceKey<Level> erasedKey = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("eraser", "erased"));
+                    ServerLevel erasedWorld = server.getLevel(erasedKey);
+                    if (erasedWorld != null) {
+                        // 見かけ上消えてるように見える
+                        target.changeDimension(erasedWorld);
+                        target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
+                    }
+                }
+            }
         }
     }
 }
