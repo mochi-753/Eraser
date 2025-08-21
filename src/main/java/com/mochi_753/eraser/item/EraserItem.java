@@ -1,4 +1,4 @@
-package com.mochi_753.eraser;
+package com.mochi_753.eraser.item;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

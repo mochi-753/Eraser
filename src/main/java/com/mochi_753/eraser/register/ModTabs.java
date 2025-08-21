@@ -1,5 +1,6 @@
-package com.mochi_753.eraser;
+package com.mochi_753.eraser.register;
 
+import com.mochi_753.eraser.Eraser;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

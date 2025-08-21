@@ -1,5 +1,7 @@
-package com.mochi_753.eraser;
+package com.mochi_753.eraser.register;
 
+import com.mochi_753.eraser.Eraser;
+import com.mochi_753.eraser.item.EraserItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
