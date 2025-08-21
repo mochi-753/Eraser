@@ -2,6 +2,7 @@ package com.mochi_753.eraser;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -74,6 +75,10 @@ public class EraserItem extends Item {
                         target.changeDimension(erasedWorld);
                         target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
                     }
+                    // サーバー / クライアント同期
+                    serverLevel.getServer().getPlayerList().broadcastAll(
+                            new ClientboundRemoveEntitiesPacket(target.getId())
+                    );
                 }
             }
         }
