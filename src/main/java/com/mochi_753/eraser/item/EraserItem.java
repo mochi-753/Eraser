@@ -1,5 +1,6 @@
 package com.mochi_753.eraser.item;
 
+import com.mochi_753.eraser.EraserConfig;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
@@ -24,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class EraserItem extends Item {
-    private static final double ERASE_RADIUS = 4.0D;
 
     public EraserItem(Properties properties) {
         super(properties);
@@ -33,9 +33,10 @@ public class EraserItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.isCrouching()) {
+            double eraseRadius = EraserConfig.COMMON.eraseRadius.get();
             List<LivingEntity> targets = player.level().getEntitiesOfClass(
                     LivingEntity.class,
-                    player.getBoundingBox().inflate(ERASE_RADIUS),
+                    player.getBoundingBox().inflate(eraseRadius),
                     e -> e != player
             );
             targets.forEach(entity -> eraseLivingEntity(entity, player, level));
@@ -54,8 +55,8 @@ public class EraserItem extends Item {
 
         playEraseSound(target, level);
         if (target instanceof Player targetPlayer) {
-            if (targetPlayer instanceof ServerPlayer serverPlayer) {
-                erasePlayer(targetPlayer, serverPlayer);
+            if (targetPlayer instanceof ServerPlayer targetServerPlayer) {
+                erasePlayer(player, targetPlayer, targetServerPlayer);
             }
         } else {
             target.remove(Entity.RemovalReason.DISCARDED);
@@ -65,9 +66,13 @@ public class EraserItem extends Item {
         }
     }
 
-    private void erasePlayer(Player player, ServerPlayer serverPlayer) {
-        player.setHealth(0F);
-        serverPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
+    private void erasePlayer(Player player, Player targetPlayer, ServerPlayer targetServerPlayer) {
+        if (EraserConfig.COMMON.allowErasePlayer.get()) {
+            targetPlayer.setHealth(0F);
+            targetServerPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
+        } else {
+            player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
+        }
     }
 
     @SuppressWarnings("removal")
@@ -79,7 +84,6 @@ public class EraserItem extends Item {
             ServerLevel erasedWorld = server.getLevel(erasedKey);
             if (erasedWorld != null) {
                 target.changeDimension(erasedWorld);
-                target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
             }
             serverLevel.getServer().getPlayerList().broadcastAll(
                     new ClientboundRemoveEntitiesPacket(target.getId())
