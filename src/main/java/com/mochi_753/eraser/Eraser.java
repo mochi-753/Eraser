@@ -1,5 +1,7 @@
 package com.mochi_753.eraser;
 
+import com.mochi_753.eraser.register.ModItems;
+import com.mochi_753.eraser.register.ModTabs;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
