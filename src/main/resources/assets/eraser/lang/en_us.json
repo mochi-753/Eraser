@@ -1,5 +1,6 @@
 {
   "item.eraser.eraser": "Eraser",
+  "item.eraser.ultra_eraser": "Ultra Eraser",
   "tabs.eraser.eraser_tab": "Eraser",
   "message.eraser.disconnect": "You were erased with an eraser.",
   "message.eraser.cannot_use": "Unavailable"

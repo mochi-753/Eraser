@@ -50,7 +50,7 @@ public class EraserItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
-    private void eraseLivingEntity(LivingEntity target, Player player, Level level) {
+    protected void eraseLivingEntity(LivingEntity target, Player player, Level level) {
         if (level.isClientSide()) return;
 
         playEraseSound(target, level);
@@ -66,7 +66,7 @@ public class EraserItem extends Item {
         }
     }
 
-    private void erasePlayer(Player player, Player targetPlayer, ServerPlayer targetServerPlayer) {
+    protected void erasePlayer(Player player, Player targetPlayer, ServerPlayer targetServerPlayer) {
         if (EraserConfig.COMMON.allowErasePlayer.get()) {
             targetPlayer.setHealth(0F);
             targetServerPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
@@ -76,7 +76,7 @@ public class EraserItem extends Item {
     }
 
     @SuppressWarnings("removal")
-    private void forceErase(LivingEntity target, Player player) {
+    protected void forceErase(LivingEntity target, Player player) {
         player.displayClientMessage(Component.literal("Erased by force"), true);
         if (target.level() instanceof ServerLevel serverLevel) {
             MinecraftServer server = serverLevel.getServer();
@@ -91,7 +91,7 @@ public class EraserItem extends Item {
         }
     }
 
-    private void playEraseSound(LivingEntity target, Level level) {
+    protected void playEraseSound(LivingEntity target, Level level) {
         level.playSound(null, target.blockPosition(), SoundEvents.ENDERMAN_TELEPORT,
                 SoundSource.PLAYERS, 1.0F, 1.0F);
     }
