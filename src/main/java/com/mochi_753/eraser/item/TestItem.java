@@ -1,5 +1,6 @@
 package com.mochi_753.eraser.item;
 
+import com.mochi_753.eraser.EraserConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -18,9 +19,13 @@ public class TestItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide()) {
-            player.setHealth(0F);
-            if (player instanceof ServerPlayer serverPlayer) {
-                serverPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
+            if (EraserConfig.COMMON.allowErasePlayer.get()) {
+                player.setHealth(0F);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    serverPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
+                }
+            } else {
+                player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
             }
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
