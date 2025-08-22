@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -23,6 +24,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class EraserItem extends Item {
+    private static final double ERASE_RADIUS = 4.0D;
+
     public EraserItem(Properties properties) {
         super(properties);
     }
@@ -30,57 +33,62 @@ public class EraserItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.isCrouching()) {
-            double radius = 4.0D;
-            List<LivingEntity> entities = player.level().getEntitiesOfClass(
+            List<LivingEntity> targets = player.level().getEntitiesOfClass(
                     LivingEntity.class,
-                    player.getBoundingBox().inflate(radius),
+                    player.getBoundingBox().inflate(ERASE_RADIUS),
                     e -> e != player
             );
-
-            for (LivingEntity entity : entities) {
-                removeLivingEntity(entity, player, player.level());
-            }
+            targets.forEach(entity -> eraseLivingEntity(entity, player, level));
         }
-
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }
 
     @Override
     public @NotNull InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
-        if (player.level().isClientSide) return InteractionResult.SUCCESS;
-        removeLivingEntity(target, player, player.level());
-
+        eraseLivingEntity(target, player, player.level());
         return InteractionResult.SUCCESS;
     }
 
-    @SuppressWarnings("removal")
-    private void removeLivingEntity(LivingEntity target, Player player, Level level) {
-        if (target instanceof Player) {
-            player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
+    private void eraseLivingEntity(LivingEntity target, Player player, Level level) {
+        if (level.isClientSide()) return;
+
+        playEraseSound(target, level);
+        if (target instanceof Player targetPlayer) {
+            if (targetPlayer instanceof ServerPlayer serverPlayer) {
+                erasePlayer(targetPlayer, serverPlayer);
+            }
         } else {
-            level.playSound(null, target.blockPosition(), SoundEvents.ENDERMAN_TELEPORT,
-                    SoundSource.PLAYERS, 1.0F, 1.0F);
-
             target.remove(Entity.RemovalReason.DISCARDED);
-
-            // 対象にremove()が効かなかった場合
             if (target.isAlive()) {
-                player.displayClientMessage(Component.literal("Erased by force"), true);
-                if (target.level() instanceof ServerLevel serverLevel) {
-                    MinecraftServer server = serverLevel.getServer();
-                    ResourceKey<Level> erasedKey = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("eraser", "erased"));
-                    ServerLevel erasedWorld = server.getLevel(erasedKey);
-                    if (erasedWorld != null) {
-                        // 見かけ上消えてるように見える
-                        target.changeDimension(erasedWorld);
-                        target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
-                    }
-                    // サーバー / クライアント同期
-                    serverLevel.getServer().getPlayerList().broadcastAll(
-                            new ClientboundRemoveEntitiesPacket(target.getId())
-                    );
-                }
+                forceErase(target, player);
             }
         }
+    }
+
+    private void erasePlayer(Player player, ServerPlayer serverPlayer) {
+        player.setHealth(0F);
+        serverPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
+    }
+
+    @SuppressWarnings("removal")
+    private void forceErase(LivingEntity target, Player player) {
+        player.displayClientMessage(Component.literal("Erased by force"), true);
+        if (target.level() instanceof ServerLevel serverLevel) {
+            MinecraftServer server = serverLevel.getServer();
+            ResourceKey<Level> erasedKey = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("eraser", "erased"));
+            ServerLevel erasedWorld = server.getLevel(erasedKey);
+            if (erasedWorld != null) {
+                target.changeDimension(erasedWorld);
+                target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
+            }
+            serverLevel.getServer().getPlayerList().broadcastAll(
+                    new ClientboundRemoveEntitiesPacket(target.getId())
+            );
+        }
+    }
+
+    private void playEraseSound(LivingEntity target, Level level) {
+        level.playSound(null, target.blockPosition(), SoundEvents.ENDERMAN_TELEPORT,
+                SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 }
