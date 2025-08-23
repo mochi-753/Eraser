@@ -15,6 +15,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> ERASER = ITEMS.register("eraser",
             () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
+    public static final RegistryObject<Item> CREATIVE_ERASER = ITEMS.register("creative_eraser",
+            () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> TEST = ITEMS.register("test",
             () -> new TestItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
