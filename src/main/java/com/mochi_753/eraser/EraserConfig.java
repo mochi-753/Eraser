@@ -16,6 +16,7 @@ public class EraserConfig {
     public static class Common {
         public final ForgeConfigSpec.BooleanValue allowErasePlayer;
         public final ForgeConfigSpec.DoubleValue eraseRadius;
+        public final ForgeConfigSpec.IntValue eraserDurability;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.comment("EraserMOD config settings").push("general");
@@ -26,6 +27,9 @@ public class EraserConfig {
             eraseRadius = builder
                     .comment("Radius for crouch-right-click erase (blocks)")
                     .defineInRange("eraseRadius", 4D, 1D, 64D);
+            eraserDurability = builder
+                    .comment("Eraser durability")
+                    .defineInRange("eraserDurability", 100, 1, Integer.MAX_VALUE);
 
             builder.pop();
         }
