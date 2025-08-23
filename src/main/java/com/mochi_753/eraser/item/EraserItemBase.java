@@ -60,7 +60,7 @@ public abstract class EraserItemBase extends Item {
                 erasePlayer(player, targetPlayer, targetServerPlayer);
             }
         } else {
-            target.remove(Entity.RemovalReason.DISCARDED);
+            target.discard();
             if (target.isAlive()) {
                 forceErase(target, player);
             }
@@ -69,7 +69,6 @@ public abstract class EraserItemBase extends Item {
 
     protected void erasePlayer(Player player, Player targetPlayer, ServerPlayer targetServerPlayer) {
         if (EraserConfig.COMMON.allowErasePlayer.get()) {
-            targetPlayer.setHealth(0F);
             targetServerPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
         } else {
             player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
