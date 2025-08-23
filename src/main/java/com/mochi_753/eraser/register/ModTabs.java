@@ -17,7 +17,6 @@ public class ModTabs {
                     .icon(ModItems.ERASER.get()::getDefaultInstance)
                     .displayItems(((pParam, pOutput) -> {
                         pOutput.accept(ModItems.ERASER.get());
-                        pOutput.accept(ModItems.ULTRA_ERASER.get());
                     }))
                     .build()
     );
