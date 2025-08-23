@@ -85,7 +85,7 @@ public abstract class EraserItemBase extends Item {
             if (erasedWorld != null) {
                 target.changeDimension(erasedWorld);
                 target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
-                // FIXME: なんで動かないのぉ????
+                // FIXME: 鯖蔵同期が要る
                 serverLevel.getChunkSource().broadcastAndSend(target, new ClientboundRemoveEntitiesPacket(target.getId()));
             }
         }
