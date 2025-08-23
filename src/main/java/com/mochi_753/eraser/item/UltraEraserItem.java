@@ -1,6 +1,7 @@
 package com.mochi_753.eraser.item;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +23,7 @@ public class UltraEraserItem extends EraserItem {
                 erasePlayer(player, targetPlayer, targetServerPlayer);
             }
         } else {
+            target.remove(Entity.RemovalReason.DISCARDED);
             forceErase(target, player);
         }
     }
