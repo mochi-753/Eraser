@@ -33,13 +33,15 @@ public class EraserItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.isCrouching()) {
+            ItemStack stack = player.getItemInHand(hand);
             double eraseRadius = EraserConfig.COMMON.eraseRadius.get();
             List<LivingEntity> targets = player.level().getEntitiesOfClass(
                     LivingEntity.class,
                     player.getBoundingBox().inflate(eraseRadius),
                     e -> e != player
             );
-            targets.forEach(entity -> eraseLivingEntity(entity, player, level));
+            targets.forEach(livingEntity -> eraseLivingEntity(livingEntity, player, level));
+            stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }
@@ -94,5 +96,10 @@ public class EraserItem extends Item {
     protected void playEraseSound(LivingEntity target, Level level) {
         level.playSound(null, target.blockPosition(), SoundEvents.ENDERMAN_TELEPORT,
                 SoundSource.PLAYERS, 1.0F, 1.0F);
+    }
+
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        return EraserConfig.COMMON.eraserDurability.get();
     }
 }

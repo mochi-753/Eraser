@@ -14,7 +14,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Eraser.MOD_ID);
 
     public static final RegistryObject<Item> ERASER = ITEMS.register("eraser",
-            () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
     public static final RegistryObject<Item> TEST = ITEMS.register("test",
             () -> new TestItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
