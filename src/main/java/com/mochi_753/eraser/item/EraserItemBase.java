@@ -60,7 +60,7 @@ public abstract class EraserItemBase extends Item {
                 erasePlayer(player, targetPlayer, targetServerPlayer);
             }
         } else {
-            target.discard();
+            target.remove(Entity.RemovalReason.DISCARDED);
             if (target.isAlive()) {
                 forceErase(target, player);
             }
@@ -84,10 +84,10 @@ public abstract class EraserItemBase extends Item {
             ServerLevel erasedWorld = server.getLevel(erasedKey);
             if (erasedWorld != null) {
                 target.changeDimension(erasedWorld);
+                target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
+                // FIXME: なんで動かないのぉ????
+                serverLevel.getChunkSource().broadcastAndSend(target, new ClientboundRemoveEntitiesPacket(target.getId()));
             }
-            serverLevel.getServer().getPlayerList().broadcastAll(
-                    new ClientboundRemoveEntitiesPacket(target.getId())
-            );
         }
     }
 
