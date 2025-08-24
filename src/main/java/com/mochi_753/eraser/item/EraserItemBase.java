@@ -3,7 +3,6 @@ package com.mochi_753.eraser.item;
 import com.mochi_753.eraser.EraserConfig;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -78,6 +77,7 @@ public abstract class EraserItemBase extends Item {
     @SuppressWarnings("removal")
     protected void forceErase(LivingEntity target, Player player) {
         player.displayClientMessage(Component.literal("Erased by force"), true);
+        player.displayClientMessage(Component.translatable("message.eraser.re_login"), false);
         if (target.level() instanceof ServerLevel serverLevel) {
             MinecraftServer server = serverLevel.getServer();
             ResourceKey<Level> erasedKey = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("eraser", "erased"));
@@ -85,8 +85,6 @@ public abstract class EraserItemBase extends Item {
             if (erasedWorld != null) {
                 target.changeDimension(erasedWorld);
                 target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
-                // FIXME: 鯖蔵同期が要る
-                serverLevel.getChunkSource().broadcastAndSend(target, new ClientboundRemoveEntitiesPacket(target.getId()));
             }
         }
     }
