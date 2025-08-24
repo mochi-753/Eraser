@@ -1,7 +1,9 @@
 {
   "item.eraser.eraser": "消しゴム",
+  "item.eraser.ultra_eraser": "高級消しゴム",
   "item.eraser.creative_eraser": "クリエイティブ消しゴム",
   "tabs.eraser.eraser_tab": "消しゴムMOD",
   "message.eraser.disconnect": "あなたは清書された！",
-  "message.eraser.cannot_use": "使用出来ません"
+  "message.eraser.cannot_use": "使用出来ません",
+  "message.eraser.re_login": "[Eraser] 削除が反映されていない場合はリログしてね"
 }

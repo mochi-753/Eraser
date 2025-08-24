@@ -3,7 +3,6 @@ package com.mochi_753.eraser.item;
 import com.mochi_753.eraser.EraserConfig;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -69,7 +68,6 @@ public abstract class EraserItemBase extends Item {
 
     protected void erasePlayer(Player player, Player targetPlayer, ServerPlayer targetServerPlayer) {
         if (EraserConfig.COMMON.allowErasePlayer.get()) {
-            targetPlayer.setHealth(0F);
             targetServerPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
         } else {
             player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
@@ -79,16 +77,15 @@ public abstract class EraserItemBase extends Item {
     @SuppressWarnings("removal")
     protected void forceErase(LivingEntity target, Player player) {
         player.displayClientMessage(Component.literal("Erased by force"), true);
+        player.displayClientMessage(Component.translatable("message.eraser.re_login"), false);
         if (target.level() instanceof ServerLevel serverLevel) {
             MinecraftServer server = serverLevel.getServer();
             ResourceKey<Level> erasedKey = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("eraser", "erased"));
             ServerLevel erasedWorld = server.getLevel(erasedKey);
             if (erasedWorld != null) {
                 target.changeDimension(erasedWorld);
+                target.remove(Entity.RemovalReason.CHANGED_DIMENSION);
             }
-            serverLevel.getServer().getPlayerList().broadcastAll(
-                    new ClientboundRemoveEntitiesPacket(target.getId())
-            );
         }
     }
 

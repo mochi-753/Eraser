@@ -1,7 +1,9 @@
 {
   "item.eraser.eraser": "Eraser",
+  "item.eraser.ultra_eraser": "Ultra Eraser",
   "item.eraser.creative_eraser": "Creative Eraser",
   "tabs.eraser.eraser_tab": "Eraser",
   "message.eraser.disconnect": "You were erased with an eraser.",
-  "message.eraser.cannot_use": "Unavailable"
+  "message.eraser.cannot_use": "Unavailable",
+  "message.eraser.re_login": "[Eraser] If the deletion hasn’t taken effect, try relogging."
 }

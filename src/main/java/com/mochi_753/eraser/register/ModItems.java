@@ -1,8 +1,10 @@
 package com.mochi_753.eraser.register;
 
 import com.mochi_753.eraser.Eraser;
+import com.mochi_753.eraser.item.CreativeEraserItem;
 import com.mochi_753.eraser.item.EraserItem;
 import com.mochi_753.eraser.item.TestItem;
+import com.mochi_753.eraser.item.UltraEraserItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -15,8 +17,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> ERASER = ITEMS.register("eraser",
             () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
+    public static final RegistryObject<Item> ULTRA_ERASER = ITEMS.register("ultra_eraser",
+            () -> new UltraEraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
     public static final RegistryObject<Item> CREATIVE_ERASER = ITEMS.register("creative_eraser",
-            () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+            () -> new CreativeEraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> TEST = ITEMS.register("test",
             () -> new TestItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
