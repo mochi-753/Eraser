@@ -15,6 +15,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Eraser.MOD_ID);
 
+    public static final RegistryObject<Item> ERASER_SHAVING = ITEMS.register("eraser_shaving",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ERASER = ITEMS.register("eraser",
             () -> new EraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
     public static final RegistryObject<Item> ULTRA_ERASER = ITEMS.register("ultra_eraser",
