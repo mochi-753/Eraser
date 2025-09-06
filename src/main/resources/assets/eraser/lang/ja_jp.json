@@ -1,9 +1,17 @@
 {
+  "item.eraser.eraser_shaving": "ケシカス",
+  "item.eraser.kneaded_eraser": "練り消し",
   "item.eraser.eraser": "消しゴム",
   "item.eraser.ultra_eraser": "高級消しゴム",
   "item.eraser.creative_eraser": "クリエイティブ消しゴム",
   "tabs.eraser.eraser_tab": "消しゴムMOD",
   "message.eraser.disconnect": "あなたは清書された！",
   "message.eraser.cannot_use": "使用出来ません",
-  "message.eraser.re_login": "[Eraser] 削除が反映されていない場合はリログしてね"
+  "message.eraser.re_login": "[Eraser] 削除が反映されていない場合はリログしてね",
+  "advancements.eraser.root.title": "消しゴムMOD",
+  "advancements.eraser.root.desc": "それは全てを消し飛ばす...",
+  "advancements.eraser.final_draft.title": "清書の時",
+  "advancements.eraser.final_draft.desc": "素晴らしい消しゴムを手に入れた",
+  "advancements.eraser.wow_fancy.title": "リッチになった気分",
+  "advancements.eraser.wow_fancy.desc": "高級消しゴムを手に入れた"
 }

@@ -20,7 +20,6 @@ public class TestItem extends Item {
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide()) {
             if (EraserConfig.COMMON.allowErasePlayer.get()) {
-                player.setHealth(0F);
                 if (player instanceof ServerPlayer serverPlayer) {
                     serverPlayer.connection.disconnect(Component.translatable("message.eraser.disconnect"));
                 }

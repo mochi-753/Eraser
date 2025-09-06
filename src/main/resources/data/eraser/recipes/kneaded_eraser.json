@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eraser:eraser_shaving"
+    }
+  },
+  "result": {
+    "item": "eraser:kneaded_eraser"
+  }
+}

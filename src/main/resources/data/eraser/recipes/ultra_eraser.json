@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "geg",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eraser:eraser_shaving"
+    },
+    "g": {
+      "item": "minecraft:gold_block"
+    },
+    "e": {
+      "item": "eraser:eraser"
+    }
+  },
+  "result": {
+    "item": "eraser:ultra_eraser"
+  }
+}

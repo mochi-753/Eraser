@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "eraser:ultra_eraser"
+    },
+    "title": {
+      "translate": "advancements.eraser.wow_fancy.title"
+    },
+    "description": {
+      "translate": "advancements.eraser.wow_fancy.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "eraser:final_draft",
+  "criteria": {
+    "final_draft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["eraser:ultra_eraser"]
+          }
+        ]
+      }
+    }
+  }
+}
