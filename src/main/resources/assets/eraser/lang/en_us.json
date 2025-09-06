@@ -1,10 +1,17 @@
 {
   "item.eraser.eraser_shaving": "Eraser Shaving",
+  "item.eraser.kneaded_eraser": "Kneaded Eraser",
   "item.eraser.eraser": "Eraser",
   "item.eraser.ultra_eraser": "Ultra Eraser",
   "item.eraser.creative_eraser": "Creative Eraser",
   "tabs.eraser.eraser_tab": "Eraser",
   "message.eraser.disconnect": "You were erased with an eraser.",
   "message.eraser.cannot_use": "Unavailable",
-  "message.eraser.re_login": "[Eraser] If the deletion hasn’t taken effect, try relogging."
+  "message.eraser.re_login": "[Eraser] If the deletion hasn’t taken effect, try relogging.",
+  "advancements.eraser.root.title": "Eraser",
+  "advancements.eraser.root.desc": "Legends say it can even erase your mistakes...",
+  "advancements.eraser.final_draft.title": "Rub It Out!",
+  "advancements.eraser.final_draft.desc": "You’ve obtained the ultimate tool of correction.",
+  "advancements.eraser.wow_fancy.title": "Wow, Fancy!",
+  "advancements.eraser.wow_fancy.desc": "You’ve acquired the luxurious eraser."
 }

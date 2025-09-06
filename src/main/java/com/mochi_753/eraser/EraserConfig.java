@@ -17,6 +17,7 @@ public class EraserConfig {
         public final ForgeConfigSpec.BooleanValue allowErasePlayer;
         public final ForgeConfigSpec.DoubleValue eraseRadius;
         public final ForgeConfigSpec.IntValue eraserDurability;
+        public final ForgeConfigSpec.IntValue kneadedEraserDurability;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.comment("EraserMOD config settings").push("general");
@@ -30,6 +31,9 @@ public class EraserConfig {
             eraserDurability = builder
                     .comment("Eraser durability")
                     .defineInRange("eraserDurability", 100, 1, Integer.MAX_VALUE);
+            kneadedEraserDurability = builder
+                    .comment("Kneaded Eraser durability")
+                    .defineInRange("kneadedEraserDurability", 10, 1, Integer.MAX_VALUE);
 
             builder.pop();
         }
