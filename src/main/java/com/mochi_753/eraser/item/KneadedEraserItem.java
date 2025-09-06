@@ -4,7 +4,6 @@ import com.mochi_753.eraser.EraserConfig;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -32,13 +31,7 @@ public class KneadedEraserItem extends EraserItemBase {
     }
 
     @Override
-    protected void eraseLivingEntity(LivingEntity target, Player player, Level level) {
-        if (level.isClientSide()) return;
-
-        if (!(target instanceof Player)) {
-            playEraseSound(target, level);
-            target.remove(Entity.RemovalReason.DISCARDED);
-        }
+    protected void forceErase(LivingEntity target, Player player) {
     }
 
     @Override
