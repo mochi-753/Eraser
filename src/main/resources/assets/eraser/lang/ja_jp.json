@@ -14,5 +14,7 @@
   "advancements.eraser.final_draft.title": "清書の時",
   "advancements.eraser.final_draft.desc": "素晴らしい消しゴムを手に入れた",
   "advancements.eraser.wow_fancy.title": "リッチになった気分",
-  "advancements.eraser.wow_fancy.desc": "高級消しゴムを手に入れた"
+  "advancements.eraser.wow_fancy.desc": "高級消しゴムを手に入れた",
+  "advancements.eraser.set_health.title": "setHealth(0)",
+  "advancements.eraser.set_health.desc": "setHealth(0)は貧弱"
 }
