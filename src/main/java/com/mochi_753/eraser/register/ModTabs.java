@@ -20,6 +20,7 @@ public class ModTabs {
                         pOutput.accept(ModItems.KNEADED_ERASER.get());
                         pOutput.accept(ModItems.ERASER.get());
                         pOutput.accept(ModItems.ULTRA_ERASER.get());
+                        pOutput.accept(ModItems.ZERO_HEALTH_ERASER.get());
                         pOutput.accept(ModItems.CREATIVE_ERASER.get());
                     }))
                     .build()
