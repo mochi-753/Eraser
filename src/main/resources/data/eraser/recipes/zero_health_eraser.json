@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "ses",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eraser:eraser_shaving"
+    },
+    "s": {
+      "item": "minecraft:netherite_sword"
+    },
+    "e": {
+      "item": "eraser:eraser"
+    }
+  },
+  "result": {
+    "item": "eraser:zero_health_eraser"
+  }
+}
