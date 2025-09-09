@@ -4,6 +4,7 @@
   "item.eraser.eraser": "Eraser",
   "item.eraser.ultra_eraser": "Ultra Eraser",
   "item.eraser.zero_health_eraser": "ZERO Health Eraser",
+  "item.eraser.crash_eraser": "Crash Eraser",
   "item.eraser.creative_eraser": "Creative Eraser",
   "tabs.eraser.eraser_tab": "Eraser",
   "message.eraser.disconnect": "You were erased with an eraser.",
@@ -16,5 +17,7 @@
   "advancements.eraser.wow_fancy.title": "Wow, Fancy!",
   "advancements.eraser.wow_fancy.desc": "You’ve acquired the luxurious eraser.",
   "advancements.eraser.set_health.title": "setHealth(0)",
-  "advancements.eraser.set_health.desc": "Sometimes 0 HP still isn’t enough."
+  "advancements.eraser.set_health.desc": "Sometimes 0 HP still isn’t enough.",
+  "advancements.eraser.crash.title": "CRASH!!!",
+  "advancements.eraser.crash.desc": "Just a prank"
 }
