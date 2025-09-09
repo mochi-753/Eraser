@@ -15,6 +15,7 @@ public class EraserConfig {
 
     public static class Common {
         public final ForgeConfigSpec.BooleanValue allowErasePlayer;
+        public final ForgeConfigSpec.BooleanValue allowCrashClient;
         public final ForgeConfigSpec.DoubleValue eraseRadius;
         public final ForgeConfigSpec.IntValue eraserDurability;
         public final ForgeConfigSpec.IntValue kneadedEraserDurability;
@@ -26,6 +27,9 @@ public class EraserConfig {
             allowErasePlayer = builder.
                     comment("Should the Eraser be able to disconnect players?")
                     .define("allowErasePlayer", false);
+            allowCrashClient = builder.
+                    comment("Should the Eraser be able to crash clients?")
+                    .define("allowCrashClient", false);
             eraseRadius = builder
                     .comment("Radius for crouch-right-click erase (blocks)")
                     .defineInRange("eraseRadius", 4D, 1D, 64D);

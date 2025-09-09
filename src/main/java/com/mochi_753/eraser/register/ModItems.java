@@ -22,6 +22,8 @@ public class ModItems {
             () -> new UltraEraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
     public static final RegistryObject<Item> ZERO_HEALTH_ERASER = ITEMS.register("zero_health_eraser",
             () -> new ZeroHealthEraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
+    public static final RegistryObject<Item> CRASH_ERASER = ITEMS.register("crash_eraser",
+            () -> new CrashEraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(1)));
     public static final RegistryObject<Item> CREATIVE_ERASER = ITEMS.register("creative_eraser",
             () -> new CreativeEraserItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> TEST = ITEMS.register("test",
