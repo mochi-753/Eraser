@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "items": ["eraser:ultra_eraser"]
+            "items": [
+              "eraser:ultra_eraser"
+            ]
           }
         ]
       }

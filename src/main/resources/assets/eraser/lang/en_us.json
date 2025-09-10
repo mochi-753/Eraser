@@ -19,5 +19,6 @@
   "advancements.eraser.set_health.title": "setHealth(0)",
   "advancements.eraser.set_health.desc": "Sometimes 0 HP still isn’t enough.",
   "advancements.eraser.crash.title": "CRASH!!!",
-  "advancements.eraser.crash.desc": "Just a prank"
+  "advancements.eraser.crash.desc": "Just a prank",
+  "compat.eraser.tconstruct": "Erase"
 }

@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "items": ["eraser:crash_eraser"]
+            "items": [
+              "eraser:crash_eraser"
+            ]
           }
         ]
       }

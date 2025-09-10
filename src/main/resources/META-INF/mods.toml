@@ -24,3 +24,10 @@ mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "tconstruct"
+mandatory = false
+versionRange = "[3.10,)"
+ordering = "NONE"
+side = "BOTH"
