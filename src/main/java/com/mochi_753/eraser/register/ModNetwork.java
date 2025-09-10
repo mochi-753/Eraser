@@ -7,7 +7,7 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 
-public class ModNetworks {
+public class ModNetwork {
     private static final String PROTOCOL_VERSION = "1";
 
     @SuppressWarnings("removal")

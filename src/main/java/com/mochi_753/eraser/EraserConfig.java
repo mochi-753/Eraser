@@ -14,7 +14,7 @@ public class EraserConfig {
     }
 
     public static class Common {
-        public final ForgeConfigSpec.BooleanValue allowErasePlayer;
+        public final ForgeConfigSpec.BooleanValue allowDisconnectPlayer;
         public final ForgeConfigSpec.BooleanValue allowCrashClient;
         public final ForgeConfigSpec.DoubleValue eraseRadius;
         public final ForgeConfigSpec.IntValue eraserDurability;
@@ -24,9 +24,9 @@ public class EraserConfig {
         public Common(ForgeConfigSpec.Builder builder) {
             builder.comment("EraserMOD config settings").push("general");
 
-            allowErasePlayer = builder.
+            allowDisconnectPlayer = builder.
                     comment("Should the Eraser be able to disconnect players?")
-                    .define("allowErasePlayer", false);
+                    .define("allowDisconnectPlayer", false);
             allowCrashClient = builder.
                     comment("Should the Eraser be able to crash clients?")
                     .define("allowCrashClient", false);
