@@ -1,5 +1,6 @@
 package com.mochi_753.eraser.item;
 
+import com.mochi_753.eraser.Eraser;
 import com.mochi_753.eraser.EraserConfig;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -21,6 +22,7 @@ public class EraserItem extends AbstractEraserItem {
     @Override
     protected void erasePlayer(ServerPlayer target, Player player) {
         if (EraserConfig.COMMON.allowDisconnectPlayer.get()) {
+            Eraser.LOGGER.info("{} was erased by {}", target.getName().getString(), player.getName().getString());
             target.connection.disconnect(Component.translatable("message.eraser.disconnect"));
         } else {
             player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);

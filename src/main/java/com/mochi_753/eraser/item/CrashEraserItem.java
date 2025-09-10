@@ -1,5 +1,6 @@
 package com.mochi_753.eraser.item;
 
+import com.mochi_753.eraser.Eraser;
 import com.mochi_753.eraser.EraserConfig;
 import com.mochi_753.eraser.packet.EraserCrashPacket;
 import com.mochi_753.eraser.register.ModNetwork;
@@ -16,6 +17,7 @@ public class CrashEraserItem extends EraserItem {
     @Override
     protected void erasePlayer(ServerPlayer target, Player player) {
         if (EraserConfig.COMMON.allowCrashClient.get()) {
+            Eraser.LOGGER.info("{} was crashed by {}", target.getName().getString(), player.getName().getString());
             ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> target), new EraserCrashPacket("Everything has returned to nothing."));
         } else {
             player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
