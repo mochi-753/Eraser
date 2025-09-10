@@ -1,7 +1,7 @@
 package com.mochi_753.eraser.item;
 
 import com.mochi_753.eraser.EraserConfig;
-import net.minecraft.resources.ResourceLocation;
+import com.mochi_753.eraser.handler.EraserHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,7 +31,7 @@ public abstract class AbstractEraserItem extends Item {
             List<LivingEntity> targets = player.level().getEntitiesOfClass(
                     LivingEntity.class, player.getBoundingBox().inflate(eraseRadius), e -> e != player
             );
-            targets.forEach(livingEntity -> eraseLivingEntity(livingEntity, player));
+            targets.forEach(livingEntity -> EraserHandler.eraseLivingEntity(livingEntity, player));
             player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
         }
 
@@ -41,14 +41,14 @@ public abstract class AbstractEraserItem extends Item {
     @Override
     public @NotNull InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (player.level().isClientSide()) return InteractionResult.SUCCESS;
-        eraseLivingEntity(target, player);
+        EraserHandler.eraseLivingEntity(target, player);
         return InteractionResult.SUCCESS;
     }
 
     protected void eraseLivingEntity(LivingEntity target, Player player) {
         playEraseSound(target, player);
         if (target instanceof ServerPlayer serverPlayer) {
-            erasePlayer(serverPlayer, player);
+            EraserHandler.erasePlayer(serverPlayer, player);
         } else {
             eraseNonPlayerEntities(target, player);
         }
@@ -61,11 +61,4 @@ public abstract class AbstractEraserItem extends Item {
     protected abstract void erasePlayer(ServerPlayer target, Player player);
 
     protected abstract void eraseNonPlayerEntities(LivingEntity target, Player player);
-
-    protected abstract void forceErase(LivingEntity target, Player player);
-
-    @SuppressWarnings("removal")
-    protected ResourceLocation getResourceLocation(String property1, String property2) {
-        return new ResourceLocation(property1, property2);
-    }
 }

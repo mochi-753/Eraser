@@ -18,7 +18,7 @@ public class CrashEraserItem extends EraserItem {
     protected void erasePlayer(ServerPlayer target, Player player) {
         if (EraserConfig.COMMON.allowCrashClient.get()) {
             Eraser.LOGGER.info("{} was crashed by {}", target.getName().getString(), player.getName().getString());
-            ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> target), new EraserCrashPacket("Everything has returned to nothing."));
+            ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> target), new EraserCrashPacket("All returns to nothing."));
         } else {
             player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
         }

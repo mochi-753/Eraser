@@ -1,7 +1,6 @@
 package com.mochi_753.eraser.item;
 
 import com.mochi_753.eraser.EraserConfig;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -12,8 +11,8 @@ public class KneadedEraserItem extends EraserItem {
     }
 
     @Override
-    protected void forceErase(LivingEntity target, Player player) {
-        player.displayClientMessage(Component.translatable("message.eraser.disconnect"), true);
+    protected void eraseNonPlayerEntities(LivingEntity target, Player player) {
+        target.discard();
     }
 
     @Override

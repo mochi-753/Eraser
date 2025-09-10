@@ -19,5 +19,6 @@
   "advancements.eraser.set_health.title": "setHealth(0)",
   "advancements.eraser.set_health.desc": "setHealth(0)は(比較的)貧弱",
   "advancements.eraser.crash.title": "クラッシュ！",
-  "advancements.eraser.crash.desc": "使われることを想定していない"
+  "advancements.eraser.crash.desc": "使われることを想定していない",
+  "compat.eraser.tconstruct": "抹消"
 }

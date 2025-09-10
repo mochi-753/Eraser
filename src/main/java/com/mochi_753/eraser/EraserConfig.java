@@ -31,7 +31,7 @@ public class EraserConfig {
                     comment("Should the Eraser be able to crash clients?")
                     .define("allowCrashClient", false);
             eraseRadius = builder
-                    .comment("Radius for crouch-right-click erase (blocks)")
+                    .comment("Radius for crouch-right-click erase.json (blocks)")
                     .defineInRange("eraseRadius", 4D, 1D, 64D);
             eraserDurability = builder
                     .comment("Eraser durability")
