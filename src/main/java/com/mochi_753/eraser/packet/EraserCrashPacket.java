@@ -19,9 +19,7 @@ public record EraserCrashPacket(String message) {
 
     public static void handle(EraserCrashPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            if (Minecraft.getInstance().player != null) {
-                Minecraft.crash(new CrashReport(":(", new Throwable(packet.message())));
-            }
+            Minecraft.crash(new CrashReport(":(", new Throwable(packet.message())));
         });
         ctx.get().setPacketHandled(true);
     }
