@@ -1,6 +1,7 @@
 package com.mochi_753.eraser.compat.tconstruct;
 
 import com.mochi_753.eraser.util.EraserHandler;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +26,7 @@ import javax.annotation.Nullable;
 public class EraseModifier extends NoLevelsModifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
     @Override
     public @NotNull Component getDisplayName() {
-        return Component.translatable("compat.eraser.tconstruct");
+        return Component.translatable("compat.eraser.tconstruct").withStyle(ChatFormatting.WHITE);
     }
 
     @Override
