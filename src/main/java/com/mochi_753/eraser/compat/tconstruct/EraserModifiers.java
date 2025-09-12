@@ -11,7 +11,7 @@ public class EraserModifiers {
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(Eraser.MOD_ID);
 
     static {
-        ERASE = MODIFIERS.register("erase", EraserModifier::new);
+        ERASE = MODIFIERS.register("erase", EraseModifier::new);
     }
 
     public static void register(IEventBus bus) {

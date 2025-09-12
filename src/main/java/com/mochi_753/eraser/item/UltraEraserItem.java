@@ -1,6 +1,7 @@
 package com.mochi_753.eraser.item;
 
-import com.mochi_753.eraser.handler.EraserHandler;
+import com.mochi_753.eraser.util.EraserHandler;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -10,7 +11,11 @@ public class UltraEraserItem extends EraserItem {
     }
 
     @Override
-    protected void eraseNonPlayerEntities(LivingEntity target, Player player) {
-        EraserHandler.forceErase(target, player);
+    protected void eraseLivingEntity(LivingEntity target, Player player) {
+        if (target instanceof ServerPlayer serverPlayer) {
+            EraserHandler.disconnectPlayer(serverPlayer, player);
+        } else {
+            EraserHandler.forceErase(target, player, true);
+        }
     }
 }

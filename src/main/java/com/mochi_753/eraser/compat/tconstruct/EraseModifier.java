@@ -1,8 +1,8 @@
 package com.mochi_753.eraser.compat.tconstruct;
 
-import com.mochi_753.eraser.handler.EraserHandler;
+import com.mochi_753.eraser.util.EraserHandler;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -22,7 +22,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
 import javax.annotation.Nullable;
 
-public class EraserModifier extends NoLevelsModifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
+public class EraseModifier extends NoLevelsModifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
     @Override
     public @NotNull Component getDisplayName() {
         return Component.translatable("compat.eraser.tconstruct");
@@ -40,15 +40,16 @@ public class EraserModifier extends NoLevelsModifier implements MeleeHitModifier
 
     @Override
     public float beforeMeleeHit(@NotNull IToolStackView tool, @NotNull ModifierEntry modifier, @NotNull ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        if (!context.getLevel().isClientSide()) {
-            if (context.getLevel() instanceof ServerLevel) {
-                if (context.getAttacker() instanceof Player player) {
-                    if (tool.hasTag(TinkerTags.Items.MELEE_PRIMARY)) {
-                        LivingEntity target = context.getLivingTarget();
-                        EraserHandler.eraseLivingEntity(target, player);
-                    }
+        if (!context.getLevel().isClientSide() && context.getAttacker() instanceof Player player && tool.hasTag(TinkerTags.Items.MELEE_PRIMARY)) {
+            LivingEntity target = context.getLivingTarget();
+            if (target != null) {
+                if (target instanceof ServerPlayer serverPlayer) {
+                    EraserHandler.disconnectPlayer(serverPlayer, player);
+                } else {
+                    EraserHandler.eraseNonPlayerEntity(target, player, false);
                 }
             }
+
         }
         return MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
     }
@@ -56,13 +57,14 @@ public class EraserModifier extends NoLevelsModifier implements MeleeHitModifier
     @Override
     public boolean onProjectileHitEntity(@NotNull ModifierNBT modifiers, @NotNull ModDataNBT persistentData, @NotNull ModifierEntry modifier, @NotNull Projectile projectile, @NotNull EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (!attacker.level().isClientSide()) {
-            if (attacker != null && attacker.level() instanceof ServerLevel) {
-                if (hit.getEntity() instanceof LivingEntity entity && attacker instanceof Player player) {
-                    EraserHandler.eraseLivingEntity(entity, player);
+            if (hit.getEntity() instanceof LivingEntity entity && attacker instanceof Player player) {
+                if (entity instanceof ServerPlayer serverPlayer) {
+                    EraserHandler.disconnectPlayer(serverPlayer, player);
+                } else {
+                    EraserHandler.eraseNonPlayerEntity(entity, player, false);
                 }
             }
         }
-
         return ProjectileHitModifierHook.super.onProjectileHitEntity(modifiers, persistentData, modifier, projectile, hit, attacker, target);
     }
 }

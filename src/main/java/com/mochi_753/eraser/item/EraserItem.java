@@ -1,34 +1,51 @@
 package com.mochi_753.eraser.item;
 
-import com.mochi_753.eraser.Eraser;
 import com.mochi_753.eraser.EraserConfig;
-import com.mochi_753.eraser.handler.EraserHandler;
-import net.minecraft.network.chat.Component;
+import com.mochi_753.eraser.util.EraserHandler;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
-public class EraserItem extends AbstractEraserItem {
+import java.util.List;
+
+public class EraserItem extends Item {
     public EraserItem(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected void erasePlayer(ServerPlayer target, Player player) {
-        if (EraserConfig.COMMON.allowDisconnectPlayer.get()) {
-            Eraser.LOGGER.info("{} was erased by {}", target.getName().getString(), player.getName().getString());
-            target.connection.disconnect(Component.translatable("message.eraser.disconnect"));
-        } else {
-            player.displayClientMessage(Component.translatable("message.eraser.cannot_use"), true);
+    public @NotNull InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
+        if (!player.level().isClientSide() && !target.level().isClientSide()) {
+            eraseLivingEntity(target, player);
         }
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    protected void eraseNonPlayerEntities(LivingEntity target, Player player) {
-        target.discard();
-        if (target.isAlive()) {
-            EraserHandler.forceErase(target, player);
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (!level.isClientSide()) {
+            if (player.isCrouching()) {
+                double eraseRadius = EraserConfig.COMMON.eraseRadius.get();
+                List<LivingEntity> targets = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(eraseRadius));
+                targets.forEach((target) -> eraseLivingEntity(target, player));
+                player.getItemInHand(hand).hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
+            }
+        }
+        return InteractionResultHolder.success(player.getItemInHand(hand));
+    }
+
+    protected void eraseLivingEntity(LivingEntity target, Player player) {
+        if (target instanceof ServerPlayer serverPlayer) {
+            EraserHandler.disconnectPlayer(serverPlayer, player);
+        } else {
+            EraserHandler.eraseNonPlayerEntity(target, player, true);
         }
     }
 
