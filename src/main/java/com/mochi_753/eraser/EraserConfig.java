@@ -18,7 +18,6 @@ public class EraserConfig {
         public final ForgeConfigSpec.BooleanValue allowCrashClient;
         public final ForgeConfigSpec.DoubleValue eraseRadius;
         public final ForgeConfigSpec.IntValue eraserDurability;
-        public final ForgeConfigSpec.IntValue kneadedEraserDurability;
         public final ForgeConfigSpec.IntValue setHealthSpamCount;
 
         public Common(ForgeConfigSpec.Builder builder) {
@@ -36,9 +35,6 @@ public class EraserConfig {
             eraserDurability = builder
                     .comment("Eraser durability")
                     .defineInRange("eraserDurability", 100, 1, Integer.MAX_VALUE);
-            kneadedEraserDurability = builder
-                    .comment("Kneaded Eraser durability")
-                    .defineInRange("kneadedEraserDurability", 10, 1, Integer.MAX_VALUE);
             setHealthSpamCount = builder
                     .comment("Repetition count for setHealth(0) spam. For those enemies who think 0 HP still means \"I'm fine\".")
                     .defineInRange("setHealthSpamCount", 100, 1, Integer.MAX_VALUE);

@@ -8,22 +8,21 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModTabs {
+public class EraserTabs {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Eraser.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> ERASER_TAB = TABS.register("eraser_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("tabs.eraser.eraser_tab"))
-                    .icon(ModItems.ERASER.get()::getDefaultInstance)
-                    .displayItems(((pParam, pOutput) -> {
-                        pOutput.accept(ModItems.ERASER_SHAVING.get());
-                        pOutput.accept(ModItems.KNEADED_ERASER.get());
-                        pOutput.accept(ModItems.ERASER.get());
-                        pOutput.accept(ModItems.ULTRA_ERASER.get());
-                        pOutput.accept(ModItems.ZERO_HEALTH_ERASER.get());
-                        pOutput.accept(ModItems.CRASH_ERASER.get());
-                        pOutput.accept(ModItems.CREATIVE_ERASER.get());
-                    }))
+                    .icon(() -> EraserItems.ERASER.get().getDefaultInstance())
+                    .displayItems((pParam, pOutput) -> {
+                        pOutput.accept(EraserItems.ERASER_SHAVING.get());
+                        pOutput.accept(EraserItems.ERASER.get());
+                        pOutput.accept(EraserItems.ULTRA_ERASER.get());
+                        pOutput.accept(EraserItems.SET_HEALTH_ERASER.get());
+                        pOutput.accept(EraserItems.CRASH_ERASER.get());
+                        pOutput.accept(EraserItems.CREATIVE_ERASER.get());
+                    })
                     .build()
     );
 
