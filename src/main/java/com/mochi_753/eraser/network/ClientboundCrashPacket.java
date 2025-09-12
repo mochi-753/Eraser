@@ -19,8 +19,7 @@ public record ClientboundCrashPacket(String message) {
     public static void handle(ClientboundCrashPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             if (Minecraft.getInstance().player != null) {
-                // "\\(^O^)/" = \(^O^)/
-                Minecraft.getInstance().delayCrash(new CrashReport("\\(^O^)/", new Throwable(packet.message())));
+                Minecraft.getInstance().delayCrash(new CrashReport("^^", new Throwable(packet.message())));
             }
         });
         ctx.get().setPacketHandled(true);
