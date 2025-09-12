@@ -33,7 +33,7 @@ public class EraserItem extends Item {
         if (!level.isClientSide()) {
             if (player.isCrouching()) {
                 double eraseRadius = EraserConfig.COMMON.eraseRadius.get();
-                List<LivingEntity> targets = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(eraseRadius));
+                List<LivingEntity> targets = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(eraseRadius), p -> p != player);
                 targets.forEach((target) -> eraseLivingEntity(target, player));
                 player.getItemInHand(hand).hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
             }
