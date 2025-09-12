@@ -5,6 +5,7 @@
   "item.eraser.zero_health_eraser": "ZERO Health Eraser",
   "item.eraser.crash_eraser": "Crash Eraser",
   "item.eraser.creative_eraser": "Creative Eraser",
+  "item.eraser.test": "Test Item",
   "tabs.eraser.eraser_tab": "Eraser",
   "message.eraser.disconnect": "You were erased with an eraser.",
   "message.eraser.cannot_use": "Unavailable",
