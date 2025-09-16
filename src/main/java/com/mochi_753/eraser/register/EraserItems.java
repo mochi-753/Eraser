@@ -13,7 +13,7 @@ public class EraserItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Eraser.MOD_ID);
 
     public static final RegistryObject<Item> ERASER_SHAVING = ITEMS.register("eraser_shaving",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ERASER = ITEMS.register("eraser",
             () -> new EraserItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).durability(1)));
     public static final RegistryObject<Item> CREATIVE_ERASER = ITEMS.register("creative_eraser",
@@ -24,8 +24,10 @@ public class EraserItems {
             () -> new ZeroHealthEraserItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).durability(1)));
     public static final RegistryObject<Item> CRASH_ERASER = ITEMS.register("crash_eraser",
             () -> new CrashEraserItem(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).durability(1)));
+    public static final RegistryObject<Item> RESPAWN_ERASER = ITEMS.register("respawn_eraser",
+            () -> new RespawnEraserItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).durability(1)));
     public static final RegistryObject<Item> TEST_ITEM = ITEMS.register("test",
-            () -> new TestItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
+            () -> new TestItem(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

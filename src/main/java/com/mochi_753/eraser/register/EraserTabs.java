@@ -21,6 +21,7 @@ public class EraserTabs {
                         pOutput.accept(EraserItems.ULTRA_ERASER.get());
                         pOutput.accept(EraserItems.SET_HEALTH_ERASER.get());
                         pOutput.accept(EraserItems.CRASH_ERASER.get());
+                        pOutput.accept(EraserItems.RESPAWN_ERASER.get());
                         pOutput.accept(EraserItems.CREATIVE_ERASER.get());
                     })
                     .build()
