@@ -67,6 +67,12 @@ public class EraserHandler {
         }
     }
 
+    public static void respawnPlayer(ServerPlayer target, Player player) {
+        if (target.level().isClientSide() || player.level().isClientSide()) return;
+
+        target.connection.player = target.server.getPlayerList().respawn(target, false);
+    }
+
     public static void setHealth(LivingEntity target, Player player) {
         if (target.level().isClientSide() || player.level().isClientSide()) return;
 
