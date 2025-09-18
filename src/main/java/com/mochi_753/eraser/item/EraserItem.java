@@ -42,6 +42,7 @@ public class EraserItem extends Item {
     }
 
     protected void eraseLivingEntity(LivingEntity target, Player player) {
+        EraserHandler.playSound(target, target.level());
         if (target instanceof ServerPlayer serverPlayer) {
             EraserHandler.disconnectPlayer(serverPlayer, player);
         } else {

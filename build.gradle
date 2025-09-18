@@ -59,6 +59,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     mavenCentral()
     maven { url 'https://dvs1.progwml6.com/files/maven' }
+    maven { url "https://cursemaven.com" }
 }
 
 dependencies {
@@ -67,6 +68,9 @@ dependencies {
     // Tinkers' Construct
     implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tinkers_version}")
+
+    // Hyperlink
+    compileOnly fg.deobf("curse.maven:hyperlink-1274604:6918685")
 }
 
 tasks.named('processResources', ProcessResources).configure {

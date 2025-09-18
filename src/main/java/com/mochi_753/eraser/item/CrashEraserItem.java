@@ -19,6 +19,7 @@ public class CrashEraserItem extends EraserItem {
 
     @Override
     protected void eraseLivingEntity(LivingEntity target, Player player) {
+        EraserHandler.playSound(target, target.level());
         if (target instanceof ServerPlayer serverPlayer) {
             EraserHandler.crashClient(serverPlayer, player);
         } else {
