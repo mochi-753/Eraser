@@ -10,6 +10,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -79,5 +81,12 @@ public class EraserHandler {
         for (int i = 0; i < EraserConfig.COMMON.setHealthSpamCount.get(); i++) {
             target.setHealth(0F);
         }
+    }
+
+    public static void playSound(LivingEntity target, Level level) {
+        if (target.level().isClientSide() || level.isClientSide()) return;
+
+        level.playSound(null, target.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS,
+                1.0F, 1.0F);
     }
 }

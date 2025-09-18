@@ -44,6 +44,7 @@ public class EraseModifier extends NoLevelsModifier implements MeleeHitModifierH
         if (!context.getLevel().isClientSide() && context.getAttacker() instanceof Player player && tool.hasTag(TinkerTags.Items.MELEE_PRIMARY)) {
             LivingEntity target = context.getLivingTarget();
             if (target != null) {
+                EraserHandler.playSound(target, target.level());
                 if (target instanceof ServerPlayer serverPlayer) {
                     EraserHandler.disconnectPlayer(serverPlayer, player);
                 } else {
@@ -59,6 +60,7 @@ public class EraseModifier extends NoLevelsModifier implements MeleeHitModifierH
     public boolean onProjectileHitEntity(@NotNull ModifierNBT modifiers, @NotNull ModDataNBT persistentData, @NotNull ModifierEntry modifier, @NotNull Projectile projectile, @NotNull EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (!attacker.level().isClientSide()) {
             if (hit.getEntity() instanceof LivingEntity entity && attacker instanceof Player player) {
+                EraserHandler.playSound(entity, entity.level());
                 if (entity instanceof ServerPlayer serverPlayer) {
                     EraserHandler.disconnectPlayer(serverPlayer, player);
                 } else {
