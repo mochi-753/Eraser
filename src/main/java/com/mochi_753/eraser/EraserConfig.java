@@ -37,7 +37,7 @@ public class EraserConfig {
                     .defineInRange("eraserDurability", 100, 1, Integer.MAX_VALUE);
             setHealthSpamCount = builder
                     .comment("Repetition count for setHealth(0) spam. For those enemies who think 0 HP still means \"I'm fine\".")
-                    .defineInRange("setHealthSpamCount", 100, 1, Integer.MAX_VALUE);
+                    .defineInRange("setHealthSpamCount", 10, 1, Integer.MAX_VALUE);
 
             builder.pop();
         }
