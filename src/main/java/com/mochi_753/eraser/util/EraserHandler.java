@@ -45,7 +45,7 @@ public class EraserHandler {
         if (target.level().isClientSide() || player.level().isClientSide()) return;
 
         target.discard();
-        if (target.isAlive()) {
+        if (target.isAlive() || !target.isDeadOrDying()) {
             forceErase(target, player, showMessage);
         }
     }
@@ -80,6 +80,11 @@ public class EraserHandler {
 
         for (int i = 0; i < EraserConfig.COMMON.setHealthSpamCount.get(); i++) {
             target.setHealth(0F);
+        }
+
+        if (target.isAlive() || !target.isDeadOrDying()) {
+            target.hurt(target.damageSources().generic(), Float.MAX_VALUE);
+            target.die(target.damageSources().generic());
         }
     }
 
