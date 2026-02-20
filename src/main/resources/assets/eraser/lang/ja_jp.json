@@ -1,0 +1,47 @@
+{
+  "itemGroup.eraser": "消しゴムMod",
+
+  "item.eraser.eraser_shaving": "消しかす",
+  "item.eraser.crash_eraser": "クラッシュ消しゴム",
+  "item.eraser.disconnect_eraser": "切断消しゴム",
+  "item.eraser.eraser": "消しゴム",
+  "item.eraser.set_health_eraser": "SetHealth消しゴム",
+  "item.eraser.novel_eraser": "ノベル消しゴム",
+  "item.eraser.section_entity_eraser": "SectionEntity消しゴム",
+  "item.eraser.sugar_eraser": "角砂糖消しゴム",
+
+  "tooltip.eraser.crash_eraser": "プレイヤーに使用するとマインクラフトをクラッシュさせます",
+  "tooltip.eraser.disconnect_eraser": "プレイヤーに使用するとサーバーから切断させます",
+  "tooltip.eraser.eraser": "一般的な消しゴム",
+  "tooltip.eraser.set_health_eraser": "相手のHPを0にして殺害します",
+  "tooltip.eraser.novel_eraser": "俺の言う通りのイレイサー！",
+  "tooltip.eraser.section_entity_eraser": "互換性の魔法によって実現されました！",
+  "tooltip.eraser.sugar_eraser": "丈夫な紙がいるぞコレ そしてちゃんと消えるのか...?",
+
+  "advancements.eraser.root.title": "消しゴムMod",
+  "advancements.eraser.root.desc": "これはまだ下書きに過ぎない...",
+  "advancements.eraser.eraser.title": "清書の時",
+  "advancements.eraser.eraser.desc": "素晴らしい消しゴムを手に入れた",
+  "advancements.eraser.set_health_eraser.title": "setHealth(0)",
+  "advancements.eraser.set_health_eraser.desc": "setHealth(0)は(比較的)貧弱",
+  "advancements.eraser.disconnect_eraser.title": "接続を維持出来ません",
+  "advancements.eraser.disconnect_eraser.desc": "(サーバーから) バイバイ☆",
+  "advancements.eraser.crash_eraser.title": "クラッシュ！",
+  "advancements.eraser.crash_eraser.desc": "使われることを想定していない",
+
+  "message.eraser.cannot_use": "使用不可",
+  "message.eraser.disconnect": "清書されてしまった！",
+
+  "modifier.eraser.erase": "抹消",
+  "modifier.eraser.crash_erase": "抹消",
+  "modifier.eraser.disconnect_erase": "抹消",
+  "modifier.eraser.novel_erase": "マイティノベル X - 消しゴム",
+  "modifier.eraser.erase.flavor": "これが消しゴムの力だ！",
+  "modifier.eraser.erase.description": "道具に消しゴムの能力を宿らせている (通常)",
+  "modifier.eraser.crash_erase.flavor": "これが消しゴムの力だ！",
+  "modifier.eraser.crash_erase.description": "道具に消しゴムの能力を宿らせている (クラッシュ)",
+  "modifier.eraser.disconnect_erase.flavor": "これが消しゴムの力だ！",
+  "modifier.eraser.disconnect_erase.description": "道具に消しゴムの能力を宿らせている (切断)",
+  "modifier.eraser.novel_erase.flavor": "なぜ消しゴムがぁ、、、！",
+  "modifier.eraser.novel_erase.description": "全ての攻撃がノベルカリバーを連打した時と同等の威力を宿す"
+}

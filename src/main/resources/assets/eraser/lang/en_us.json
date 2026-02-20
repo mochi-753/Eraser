@@ -1,0 +1,47 @@
+{
+  "itemGroup.eraser": "Eraser Mod",
+
+  "item.eraser.eraser_shaving": "Eraser Shavings",
+  "item.eraser.crash_eraser": "Crash Eraser",
+  "item.eraser.disconnect_eraser": "Disconnect Eraser",
+  "item.eraser.eraser": "Eraser",
+  "item.eraser.set_health_eraser": "SetHealth Eraser",
+  "item.eraser.novel_eraser": "Novel Eraser",
+  "item.eraser.section_entity_eraser": "Section Entity Eraser",
+  "item.eraser.sugar_eraser": "Sugar Eraser",
+
+  "tooltip.eraser.crash_eraser": "If the target is a player, it will crash Minecraft.",
+  "tooltip.eraser.disconnect_eraser": "Using this on a player will disconnect them from the server.",
+  "tooltip.eraser.eraser": "Standard eraser",
+  "tooltip.eraser.set_health_eraser": "Depletes the target's HP to zero and kills it.",
+  "tooltip.eraser.novel_eraser": "Mighty Novel Eraser",
+  "tooltip.eraser.section_entity_eraser": "Made possible by compatibility magic!",
+  "tooltip.eraser.sugar_eraser": "The paper must be durable.",
+
+  "advancements.eraser.root.title": "Eraser",
+  "advancements.eraser.root.desc": "Legends say it can even erase your mistakes...",
+  "advancements.eraser.eraser.title": "Rub It Out!",
+  "advancements.eraser.eraser.desc": "You’ve obtained the ultimate tool of correction.",
+  "advancements.eraser.set_health_eraser.title": "setHealth(0)",
+  "advancements.eraser.set_health_eraser.desc": "Sometimes 0 HP still isn’t enough.",
+  "advancements.eraser.disconnect_eraser.title": "DISCONNECTED",
+  "advancements.eraser.disconnect_eraser.desc": "Bye-bye (from the server)",
+  "advancements.eraser.crash_eraser.title": "CRASH!!!",
+  "advancements.eraser.crash_eraser.desc": "Just a prank",
+
+  "message.eraser.cannot_use": "Unavailable",
+  "message.eraser.disconnect": "You were erased with an eraser.",
+
+  "modifier.eraser.erase": "Erase",
+  "modifier.eraser.crash_erase": "Erase",
+  "modifier.eraser.disconnect_erase": "Erase",
+  "modifier.eraser.novel_erase": "Mighty Novel X - Eraser",
+  "modifier.eraser.erase.flavor": "Powered by Eraser",
+  "modifier.eraser.erase.description": "Imbuing tools with the power of an Eraser (Standard)",
+  "modifier.eraser.crash_erase.flavor": "Powered by Eraser",
+  "modifier.eraser.crash_erase.description": "Imbuing tools with the power of an Eraser (Crash)",
+  "modifier.eraser.disconnect_erase.flavor": "Powered by Eraser",
+  "modifier.eraser.disconnect_erase.description": "Imbuing tools with the power of an Eraser (Disconnect)",
+  "modifier.eraser.novel_erase.flavor": "Powered by Eraser and Hyperlink!",
+  "modifier.eraser.novel_erase.description": "All attacks were treated as instant-kill attacks in rapid succession."
+}

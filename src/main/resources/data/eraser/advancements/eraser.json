@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "eraser:eraser"
+    },
+    "title": {
+      "translate": "advancements.eraser.eraser.title"
+    },
+    "description": {
+      "translate": "advancements.eraser.eraser.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "eraser:root",
+  "criteria": {
+    "final_draft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "eraser:eraser"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

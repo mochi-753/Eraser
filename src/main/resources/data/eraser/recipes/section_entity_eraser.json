@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "ses",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eraser:eraser_shaving"
+    },
+    "s": {
+      "item": "section_entity_remover:section_entity_remover"
+    },
+    "e": {
+      "item": "eraser:eraser"
+    }
+  },
+  "result": {
+    "item": "eraser:section_entity_eraser"
+  }
+}

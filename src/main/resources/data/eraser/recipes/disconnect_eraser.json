@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "beb",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eraser:eraser_shaving"
+    },
+    "b": {
+      "item": "minecraft:barrier"
+    },
+    "e": {
+      "item": "eraser:eraser"
+    }
+  },
+  "result": {
+    "item": "eraser:disconnect_eraser"
+  }
+}

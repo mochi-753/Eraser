@@ -1,0 +1,59 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+displayURL = "https://github.com/mochi-753/Eraser"
+logoFile = "logo.png"
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+credits = '''Tinkers' Construct: SlimeKnights
+Hyperlink: Sakurafuld
+SectionEntityRemover: 粉みかん
+c11-Eraser: consome-c11(test)
+'''
+
+[[dependencies.${ mod_id }]]
+modId = "forge"
+mandatory = true
+versionRange = "${forge_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "tconstruct"
+mandatory = false
+versionRange = "[3.10,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "hyperdaimc"
+mandatory = false
+versionRange = "[1201.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "section_entity_remover"
+mandatory = false
+versionRange = "[1.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "c11eraser"
+mandatory = false
+versionRange = "[1.4,)"
+ordering = "NONE"
+side = "BOTH"

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "ses",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eraser:eraser_shaving"
+    },
+    "s": {
+      "item": "minecraft:diamond_sword"
+    },
+    "e": {
+      "item": "eraser:eraser"
+    }
+  },
+  "result": {
+    "item": "eraser:set_health_eraser"
+  }
+}

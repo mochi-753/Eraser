@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:modifier",
+  "tools": [
+    {
+      "tag": "tconstruct:modifiable/melee/primary"
+    },
+    {
+      "tag": "tconstruct:modifiable/ranged"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "eraser:disconnect_eraser"
+    }
+  ],
+  "slots": {
+    "abilities": 1
+  },
+  "result": "eraser:disconnect_erase",
+  "level": 1
+}

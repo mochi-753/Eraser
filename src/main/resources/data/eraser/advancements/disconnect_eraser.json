@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "eraser:disconnect_eraser"
+    },
+    "title": {
+      "translate": "advancements.eraser.disconnect_eraser.title"
+    },
+    "description": {
+      "translate": "advancements.eraser.disconnect_eraser.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "eraser:eraser",
+  "criteria": {
+    "eraser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "eraser:disconnect_eraser"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

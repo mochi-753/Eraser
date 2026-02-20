@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "eraser:eraser"
+    },
+    "title": {
+      "translate": "advancements.eraser.root.title"
+    },
+    "description": {
+      "translate": "advancements.eraser.root.desc"
+    },
+    "background": "minecraft:textures/block/white_wool.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

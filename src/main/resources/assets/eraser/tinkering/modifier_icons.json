@@ -1,0 +1,6 @@
+{
+  "eraser:erase": "eraser:item/eraser_shaving",
+  "eraser:crash_erase": "eraser:item/eraser_shaving",
+  "eraser:disconnect_erase": "eraser:item/eraser_shaving",
+  "eraser:novel_erase": "hyperdaimc:item/novel"
+}
